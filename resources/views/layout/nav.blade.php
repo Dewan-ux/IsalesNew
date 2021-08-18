@@ -24,26 +24,30 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="#"><i class="fa fa-circle-o"></i>Data Umroh</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Paket Umroh</a></li>
+            <li><a href="/umroh"><i class="fa fa-circle-o"></i>Paket Umroh</a></li>
           </ul>
         </li>
 
         <li class="{{ request()->is('tour') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Tour</span></a></li>
         <li class="{{ request()->is('la') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>LA</span></a></li>
-        <li class="{{ request()->is('hotel') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Hotel</span></a></li>
-        <li class="{{ request()->is('visa') ? 'active' : '' }}"><a href="/visa"><i class="fa fa-book"></i> <span>Visa</span></a></li>
-        <li class="{{ request()->is('tiket pesawat') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Tiket Pesawat</span></a></li>
+
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
+            <i class="fa fa-book"></i> <span>Hotel</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            <li><a href="/hotel"><i class="fa fa-circle-o"></i>List Hotel</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Hotel Room Facility</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Hotel Room Type</a></li>
           </ul>
         </li>
+        
+        <li class="{{ request()->is('visa') ? 'active' : '' }}"><a href="/visa"><i class="fa fa-book"></i> <span>Visa</span></a></li>
+        <li class="{{ request()->is('tiket pesawat') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Tiket Pesawat</span></a></li>
+        <li class="{{ request()->is('tiket pesawat') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Payment</span></a></li>
+        <li class="{{ request()->is('tiket pesawat') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Transaksi</span></a></li>
       </ul>
   

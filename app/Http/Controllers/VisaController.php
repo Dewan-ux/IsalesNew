@@ -63,9 +63,15 @@ class VisaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function detail($VisaTypeID)
     {
-        //
+        if (!$this->VisaModel->detailData($VisaTypeID)) {
+            abort(404);
+        }
+        $data = [
+                'visa' => $this->VisaModel->detailData($VisaTypeID),
+            ];
+            return view('visa.detail', $data);
     }
 
     /**
@@ -76,7 +82,13 @@ class VisaController extends Controller
      */
     public function edit($VisaTypeID)
     {
-        return view('visa.edit');
+        if (!$this->VisaModel->detailData($VisaTypeID)) {
+            abort(404);
+        }
+        $data = [
+                'visa' => $this->VisaModel->detailData($VisaTypeID),
+            ];
+        return view('visa.edit', $data);
     }
 
     /**
@@ -88,8 +100,21 @@ class VisaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Request()->validate([
+        'VisaTypeCode' => 'required|min:50|max:100',
+        'VisaTypeName' => 'required',
+        
+    ]);
+
+        $data = [
+            'VisaTypeCode' => Request()->VisaTypeCode,
+            'VisaTypeName' => Request()->VisaTypeName,
+        ];
+
+        $this->VisaModel->editData($VisaTypeID, $data);
+        return redirect()->route('visa')->with('pesan', 'Data Edited Successfully');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -97,8 +122,9 @@ class VisaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($VisaTypeID)
     {
-        //
+        $this->VisaModel->deleteData($VisaTypeID);
+        return redirect()->route('visa')->with('pesan', 'Data Deleted Successfully');
     }
 }

@@ -12,4 +12,25 @@ class VisaModel extends Model
     {
         return DB::table('visatypetable')->get();
     }
+
+    public function detailData($VisaTypeID) 
+    {
+        return DB::table('visatypetable')->where('VisaTypeID', $VisaTypeID)->first();
+    }
+
+    public function editData($VisaTypeID, $data)
+    {
+        DB::table('visatypetable')
+        ->where('VisaTypeID', $VisaTypeID)
+        ->update($data);
+    }
+
+    public function deleteData($VisaTypeID)
+    {
+        DB::table('visatypetable')
+        ->where('VisaTypeID', $VisaTypeID)
+        ->delete();
+    }
+
+
 }
