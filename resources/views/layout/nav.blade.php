@@ -3,15 +3,15 @@
         <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
 
         <li class="treeview">
-          <a href="/haji">
+          <a href="">
             <i class="fa fa-book"></i> <span>Haji</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i>Data Haji</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Paket Haji</a></li>
+            <li><a href="/pakethaji"><i class="fa fa-circle-o"></i>Paket Haji</a></li>
+            <li><a href="/kelashaji"><i class="fa fa-circle-o"></i>Kelas Haji</a></li>
           </ul>
         </li>
 
@@ -23,13 +23,36 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i>Data Umroh</a></li>
+            <li><a href="/kelasumroh"><i class="fa fa-circle-o"></i>Kelas Umroh</a></li>
             <li><a href="/umroh"><i class="fa fa-circle-o"></i>Paket Umroh</a></li>
           </ul>
         </li>
 
-        <li class="{{ request()->is('tour') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Tour</span></a></li>
-        <li class="{{ request()->is('la') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>LA</span></a></li>
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-book"></i> <span>Tour</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/tour"><i class="fa fa-circle-o"></i>List Tour</a></li>
+            <li><a href="/tourtype"><i class="fa fa-circle-o"></i>Tour Type</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-book"></i> <span>LA</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/listla"><i class="fa fa-circle-o"></i>List LA</a></li>
+            <li><a href="/latype"><i class="fa fa-circle-o"></i>LA Type</a></li>
+          </ul>
+        </li>
 
         <li class="treeview">
           <a href="#">
@@ -49,5 +72,6 @@
         <li class="{{ request()->is('tiket pesawat') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Tiket Pesawat</span></a></li>
         <li class="{{ request()->is('tiket pesawat') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Payment</span></a></li>
         <li class="{{ request()->is('tiket pesawat') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Transaksi</span></a></li>
+        <li class="{{ request()->is('tiket pesawat') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Rekening</span></a></li>
       </ul>
   

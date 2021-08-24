@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title','Paket Umroh')
+@section('title','Paket Haji')
 
 
 @section('content')
@@ -16,10 +16,10 @@
               <table class="table table-striped table-hover">
                   <thead>
                 <tr>
-                  <th>Package ID</th>  
-                  <th>Package Code</th>
-                  <th>Package Name</th>
-                  <th width="200px">Package Description</th>
+                  <th>Package Haji ID</th>  
+                  <th>Package Haji Code</th>
+                  <th>Package Haji Name</th>
+                  <th width="200px">Description</th>
                   <th>Price</th>
                   <th>Available Seets</th>
                   <th>Action</th>
@@ -28,16 +28,16 @@
                 
                 <tbody>
                     <?php $no=1; ?>
-                    @foreach ($umroh as $data)
+                    @foreach ($pakethaji as $data)
                 <tr> 
                   <td>{{ $no++ }}</td>  
-                  <td>{{ $data->PackageCode }}</td>
-                  <td>{{ $data->PackageName }}</td>
-                  <td>{{ $data->PackageDesc }}</td>
-                  <td>{{ $data->PackagePrice }}</td>
-                  <td>{{ $data->PackageAvailSeets }}</td>
+                  <td>{{ $data->PackageHajiCode }}</td>
+                  <td>{{ $data->PackageHajiName }}</td>
+                  <td>{{ $data->PackageHajiDesc }}</td>
+                  <td>{{ $data->PackageHajiPrice }}</td>
+                  <td>{{ $data->HajiAvailSeets }}</td>
                   <td>
-                      <a href="/umroh/detail/{{ $data->PackageID }}" class="btn btn-sm btn-success">Detail</a>
+                      <a href="/pakethaji/detail/{{ $data->PackageHajiID }}" class="btn btn-sm btn-success">Detail</a>
                       <a href="" class="btn btn-sm btn-warning">Edit</a>
                       <a href="" class="btn btn-sm btn-danger">Delete</a>
                   </td>
