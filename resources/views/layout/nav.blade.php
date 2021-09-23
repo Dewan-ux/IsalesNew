@@ -69,9 +69,34 @@
         </li>
         
         <li class="{{ request()->is('visa') ? 'active' : '' }}"><a href="/visa"><i class="fa fa-book"></i> <span>Visa</span></a></li>
-        <li class="{{ request()->is('tiket pesawat') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Tiket Pesawat</span></a></li>
+        
+		<li class="treeview">
+          <a href="">
+            <i class="fa fa-book"></i> <span>Tiket Pesawat</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/flight"><i class="fa fa-circle-o"></i>List Penerbangan</a></li>
+            <li><a href="/flightclass"><i class="fa fa-circle-o"></i>Kelas Penerbangan</a></li>
+          </ul>
+        </li>
+		
         <li class="{{ request()->is('tiket pesawat') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Payment</span></a></li>
-        <li class="{{ request()->is('tiket pesawat') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Transaksi</span></a></li>
+        <li class="{{ request()->is('tiket pesawat') ? 'active' : '' }}"><a href="/transaksi"><i class="fa fa-book"></i> <span>Transaksi</span></a></li>
         <li class="{{ request()->is('tiket pesawat') ? 'active' : '' }}"><a href=""><i class="fa fa-book"></i> <span>Rekening</span></a></li>
+		<li class="treeview">
+          <a href="">
+            <i class="fa fa-book"></i> <span>Customer</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/customer"><i class="fa fa-circle-o"></i>List Customer</a></li>
+            <li><a href="/flightclass"><i class="fa fa-circle-o"></i>List Agent</a></li>
+          </ul>
+        </li>
       </ul>
   

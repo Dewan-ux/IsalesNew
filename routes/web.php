@@ -12,6 +12,10 @@ use App\Http\Controllers\TourController;
 use App\Http\Controllers\TourTypeController;
 use App\Http\Controllers\LaTypeController;
 use App\Http\Controllers\ListLaController;
+use App\Http\Controllers\FlightController;
+use App\Http\Controllers\FlightClassController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\TransactionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,7 +35,7 @@ use App\Http\Controllers\ListLaController;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 // visa
 Route::get('/visa', [VisaController::class, 'index']);
 Route::get('/visa/detail/{VisaTypeID}', [VisaController::class, 'detail']);
@@ -65,3 +69,23 @@ Route::get('/tourtype/detail/{TourTypeID}', [TourTypeController::class, 'detail'
 // Land Arrangement
 Route::get('/latype', [LaTypeController::class, 'index']);
 Route::get('/listla', [ListLaController::class, 'index']);
+
+// Tiket Pesawat
+Route::get('/flight', [FlightController::class, 'index']);
+Route::get('/flight/detail/{FlightListID}', [FlightController::class, 'detail']);
+Route::get('/flightclass', [FlightClassController::class, 'index']);
+Route::get('/flightclass/detail/{FlightListClassID}', [FlightClassController::class, 'detail']);
+
+//Customer
+Route::get('/customer', [CustomerController::class, 'index']);
+Route::get('/customer/detail/{CustomerId}', [CustomerController::class, 'detail']);
+Route::get('/customer/add', [CustomerController::class, 'add']);
+Route::post('/customer/store', [CustomerController::class, 'store']);
+Route::get('/customer/edit/{CustomerId}', [CustomerController::class, 'edit']);
+Route::post('/customer/update/{CustomerId}', [CustomerController::class, 'update']);
+Route::get('/customer-delete/{CustomerId}', [CustomerController::class, 'destroy']);
+Route::get('/customer/Upgradeagent/{CustomerId}', [CustomerController::class, 'Upgradeagent']);
+Route::post('/customer/Agent/{CustomerId}', [CustomerController::class, 'Agent']);
+
+//Transaksi
+Route::get('/transaksi', [TransactionController::class, 'index']);

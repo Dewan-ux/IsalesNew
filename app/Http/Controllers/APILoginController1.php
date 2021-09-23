@@ -7,7 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\User;
 
-class LoginController extends Controller
+class APILoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -38,9 +38,9 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-	/*
+	
 	public function APIlogin(Request $request)
-  {
+	{
       $this->validate($request, [
           'email' => 'required|email',
           'password' => 'required|min:6'
@@ -65,13 +65,12 @@ class LoginController extends Controller
       ]);
 
       return response()->json($user,200);
-  }*/
+	}
   
-	public function APIlogin (Request $request){
-    //    dd($request->all());
+	/*public function APIlogin (Request $request){
         if(Auth::attempt($request->only('email','password'))){
             return response('[200] - Login Berhasil');
         }
         return response('[404] - Login Gagal');
-    }
+    }*/
 }
