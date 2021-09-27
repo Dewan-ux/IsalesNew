@@ -4,13 +4,20 @@
 
 @section('content')
 
-<a href="" class="btn btn-primary btn-sm">Add Data</a> 
+<a href="/kelashaji/add" class="btn btn-primary btn-sm">Add Data</a> 
       <div class="row">
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Data Class Haji</h3>
             </div>
+
+            @if (session('status'))
+              <div class="alert alert-success">
+                {{ session('status') }}
+              </div>
+            @endif
+
         <!-- /.box-header -->
             <div class="box-body">
               <table class="table table-striped table-hover">
@@ -19,6 +26,7 @@
                   <th>Class Haji ID</th>  
                   <th>Class Haji Code</th>
                   <th>Class Haji Name</th>
+                  <th>Price</th>
                   <th>Action</th>
                 </tr>
                   </thead>
@@ -30,6 +38,7 @@
                   <td>{{ $no++ }}</td>  
                   <td>{{ $data->ClassCode }}</td>
                   <td>{{ $data->ClassName }}</td>
+                  <td>{{ $data->Price }}</td>
                   <td>
                       <a href="/kelashaji/detail/{{ $data->ClassID }}" class="btn btn-sm btn-success">Detail</a>
                       <a href="" class="btn btn-sm btn-warning">Edit</a>
@@ -40,5 +49,6 @@
                 
                </tbody>
               </table>
+            </div>
 
 @endsection

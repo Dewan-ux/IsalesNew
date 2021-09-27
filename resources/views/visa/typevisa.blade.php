@@ -10,6 +10,13 @@
             <div class="box-header with-border">
               <h3 class="box-title">Data Type Visa</h3>
             </div>
+
+            @if (session('status'))
+              <div class="alert alert-success">
+                {{ session('status') }}
+              </div>
+            @endif
+
         <!-- /.box-header -->
             <div class="box-body">
               <table class="table table-striped table-hover">

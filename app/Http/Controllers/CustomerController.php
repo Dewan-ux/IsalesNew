@@ -7,6 +7,7 @@ use App\Models\customer;
 use App\Models\city;
 use App\Models\country;
 use App\Models\province;
+use App\Models\User;
 
 class CustomerController extends Controller
 {
@@ -16,6 +17,7 @@ class CustomerController extends Controller
 		$this->city = new city();
 		$this->country = new country();
 		$this->province = new province();
+		$this->user = new User();
     }
 	
     public function index()
@@ -201,4 +203,12 @@ class CustomerController extends Controller
         $agent->update($request->all());
         return redirect('customer')->with('pesan', 'Upgrade Agent Successfully');
 	}
+	
+	public function userlist()
+    {
+		$data = [
+                'user' => $this->user->allData(),
+            ];
+        return view('customer.listlogin.list', $data);
+    }
 }

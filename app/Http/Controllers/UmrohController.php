@@ -36,15 +36,40 @@ class UmrohController extends Controller
             return view('umroh.paket_umroh.detail', $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function add()
     {
-        //
+        return view('umroh.paket_umroh.add');
+    }
+
+
+    public function insert()
+    {
+        // dd($request->all());
+
+        Request()->validate([
+            'PackageCode' => 'required|unique:packagetable,PackageCode|max:100',
+            'PackageName' => 'required',
+            'PackageDesc' => 'required',
+            'PackagePrice' => 'required',
+            'PackageAvailSeets' => 'required',
+            'Image' => 'required|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $file = Request()->Image;
+        $fileName = Request()->PackageCode . '.' . $file->extension();
+        $file->move(public_path('image_umroh'), $fileName);
+
+        $data = [
+            'PackageCode' => Request()->PackageCode,
+            'PackageName' => Request()->PackageName,
+            'PackageDesc' => Request()->PackageDesc,
+            'PackagePrice' => Request()->PackagePrice,
+            'PackageAvailSeets' => Request()->PackageAvailSeets,
+            'Image' => $fileName,
+        ];
+        
+        $this->UmrohModel->addData($data);
+        return redirect('umroh')->with('status', 'Data Added Successfully');
     }
 
     /**

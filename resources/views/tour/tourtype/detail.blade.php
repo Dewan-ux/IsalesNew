@@ -16,7 +16,7 @@
         <th>{{ $tourtype->TourTypeName }}</th>
     </tr>
     <tr>
-        <th><a href="/tour" class="btn btn-success tbn-sm">Back</a></th>
+        <th><a href="/tourtype" class="btn btn-success tbn-sm">Back</a></th>
     </tr>
 </table>
 

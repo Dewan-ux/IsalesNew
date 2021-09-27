@@ -11,6 +11,11 @@
         <th>{{ $hotel->HotelListCode }}</th>
     </tr>
     <tr>
+        <th width="150px">Travel Name</th>
+        <th width="30px">:</th>
+        <th>{{ $hotel->HotelTravelName }}</th>
+    </tr>
+    <tr>
         <th width="150px">Hotel List Name</th>
         <th width="30px">:</th>
         <th>{{ $hotel->HotelListName }}</th>
@@ -19,6 +24,11 @@
         <th width="150px">Hotel List Location</th>
         <th width="30px">:</th>
         <th>{{ $hotel->HotelListLocation }}</th>
+    </tr>
+    <tr>
+        <th width="150px">Description</th>
+        <th width="30px">:</th>
+        <th>{{ $hotel->HotelDesc }}</th>
     </tr>
     <tr>
         <th width="100px">Hotel List Image</th>

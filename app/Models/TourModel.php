@@ -17,4 +17,9 @@ class TourModel extends Model
     {
         return DB::table('tourpricetable')->where('TourPriceID', $TourPriceID)->first();
     }  
+
+    public function addData($data)
+    {
+        return DB::table('tourpricetable')->insert($data);
+    } 
 }

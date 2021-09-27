@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\VisaModel;
+use DB;
 
 class VisaController extends Controller
 {
@@ -37,24 +38,13 @@ class VisaController extends Controller
         return view('visa.add');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function insert()
+    public function insert(Request $request)
     {
-
-        Request()->validate([
-        'VisaTypeCode' => 'required|unique:visatypetable,VisaTypeCode|min:50|max:100',
-        'VisaTypeName' => 'required',
-        ], [
-            // ini untuk jika validasi tidak ada atau sudah ada maka akan menampilkan pesan kaya dibawah
-            // 'VisaTypeCode.unique' => 'This visa type code already exists',
-    ]);
-        
-
+        DB::table('visatypetable')->insert([
+            'VisaTypeCode' => $request->VisaTypeCode,
+            'VisaTypeName' => $request->VisaTypeName,
+        ]);
+        return redirect('visa')->with('status', 'Data Added Successfully');
     }
 
     /**

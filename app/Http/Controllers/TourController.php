@@ -37,15 +37,39 @@ class TourController extends Controller
         return view('tour.listtour.detail', $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function add()
     {
-        //
+        return view('tour.listtour.add');
+    }
+
+    public function insert()
+    {
+        // dd($request->all());
+
+        Request()->validate([
+            'TourPriceCode' => 'required|unique:tourpricetable,TourPriceCode|max:100',
+            'TourPriceName' => 'required',
+            'TourPrice' => 'required',
+            'TourItenary' => 'required',
+            'TourAvailSeets' => 'required',
+            'TourImage' => 'required|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $file = Request()->TourImage;
+        $fileName = Request()->TourPriceCode . '.' . $file->extension();
+        $file->move(public_path('image_tour'), $fileName);
+
+        $data = [
+            'TourPriceCode' => Request()->TourPriceCode,
+            'TourPriceName' => Request()->TourPriceName,
+            'TourPrice' => Request()->TourPrice,
+            'TourItenary' => Request()->TourItenary,
+            'TourAvailSeets' => Request()->TourAvailSeets,
+            'TourImage' => $fileName,
+        ];
+        
+        $this->TourModel->addData($data);
+        return redirect('tour')->with('status', 'Data Added Successfully');
     }
 
     /**

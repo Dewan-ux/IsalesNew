@@ -36,15 +36,40 @@ class PaketHajiController extends Controller
         return view('haji.pakethaji.detail', $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function add()
     {
-        //
+        return view('haji.pakethaji.add');
+    }
+
+    
+    public function insert()
+    {
+        // dd($request->all());
+
+        Request()->validate([
+            'PackageHajiCode' => 'required|unique:packagehajitable,PackageHajiCode|max:100',
+            'PackageHajiName' => 'required',
+            'PackageHajiDesc' => 'required',
+            'Price' => 'required',
+            'HajiAvailSeets' => 'required',
+            'PackageHajiImage' => 'required|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $file = Request()->PackageHajiImage;
+        $fileName = Request()->PackageHajiCode . '.' . $file->extension();
+        $file->move(public_path('image_haji'), $fileName);
+
+        $data = [
+            'PackageHajiCode' => Request()->PackageHajiCode,
+            'PackageHajiName' => Request()->PackageHajiName,
+            'PackageHajiDesc' => Request()->PackageHajiDesc,
+            'Price' => Request()->Price,
+            'HajiAvailSeets' => Request()->HajiAvailSeets,
+            'PackageHajiImage' => $fileName,
+        ];
+        
+        $this->PaketHajiModel->addData($data);
+        return redirect('pakethaji')->with('status', 'Data Added Successfully');
     }
 
     /**

@@ -12,4 +12,9 @@ class KelasUmrohModel extends Model
     {
         return DB::table('packageclasstable')->get();
     }
+
+    public function detailData($PackageClassID)
+    {
+        return DB::table('packageclasstable')->where('PackageClassID', $PackageClassID)->first();
+    } 
 }

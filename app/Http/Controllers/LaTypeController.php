@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\LaTypeModel;
+use DB;
 
 class LaTypeController extends Controller
 {
@@ -20,25 +21,31 @@ class LaTypeController extends Controller
         return view('LA.latype.type', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    
+    public function detail($LaTypeID)
     {
-        //
+        if (!$this->LaTypeModel->detailData($LaTypeID)) {
+            abort(404);
+        }
+
+        $data = [
+                'latype' => $this->LaTypeModel->detailData($LaTypeID),
+            ];
+        return view('LA.latype.detail', $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function add()
     {
-        //
+        return view('LA.latype.add');
+    }
+
+    public function insert(Request $request)
+    {
+        DB::table('latypetable')->insert([
+            'LaTypeCode' => $request->LaTypeCode,
+            'LaTypeName' => $request->LaTypeName,
+        ]);
+        return redirect('latype')->with('status', 'Data Added Successfully');
     }
 
     /**

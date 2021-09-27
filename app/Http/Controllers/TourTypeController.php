@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TourTypeModel;
+use DB;
 
 class TourTypeController extends Controller
 {
@@ -37,15 +38,20 @@ class TourTypeController extends Controller
         return view('tour.tourtype.detail', $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function add()
     {
-        //
+        return view('tour.tourtype.add');
+    }
+
+
+    public function insert(Request $request)
+    {
+        DB::table('tourtypetable')->insert([
+            'TourTypeCode' => $request->TourTypeCode,
+            'TourTypeName' => $request->TourTypeName,
+        ]);
+        return redirect('tourtype')->with('status', 'Data Added Successfully');
     }
 
     /**

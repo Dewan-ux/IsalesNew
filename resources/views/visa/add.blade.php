@@ -1,45 +1,39 @@
 @extends('layout.app')
 @section('title','Add Data')
 
-
 @section('content')
-
-<form action="/visa/insert" method="POST">
-  @csrf
-
-<div class="content">
-  <div class="row">
-    <div class="col-sm-6">
-      
-      <div class="form-group">
-        <label class="form-label">Visa Type Code</label>
-        <input name="visatypecode" class="form-control" value="{{ old('visatypecode') }}">
-        <div class="text-danger">
-          @error('VisaTypeCode')
-              {{ $message }}
-          @enderror
+      <div class="pull-left">
+            <a href="/visa" class="btn btn-secondary btn-lg">
+                <i class="fa fa-undo"></i> Back
+            </a>
         </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Create Data Type Visa</h3>
+            </div>
+
+        <!-- /.box-header -->
+            <div class="box-body">
+                <form action="/visa/insert" method="POST" enctype="multipart/form-data">
+                    @csrf
+                <div class="form-group">
+        <label class="form-label">Visa Type Code</label>
+        <input type="text" name="VisaTypeCode" class="form-control" placeholder="Visa Type Code" autofocus required>
       </div>
     
       <div class="form-group">
         <label class="form-label">Visa Type Name</label>
-        <input name="visatypename" class="form-control" value="{{ old('visatypename') }}">
-        <div class="text-danger">
-          @error('VisaTypeName')
-              {{ $message }}
-          @enderror
-        </div>
+        <input name="VisaTypeName" class="form-control" placeholder="Visa Type Name" required>
       </div>
 
       <div class="form-group">
-        <button class="btn btn-primary btm-sm">Save</button>
+        <button type="submit" class="btn btn-success btm-sm">Save</button>
       </div>
-     
 
-    </div>
-  </div>
-</div>
-  
-</form>
+            </div>
+
 
 @endsection
+

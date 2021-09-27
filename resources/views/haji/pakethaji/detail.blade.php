@@ -11,7 +11,12 @@
         <th>{{ $pakethaji->PackageHajiCode }}</th>
     </tr>
     <tr>
-        <th width="150px">Package Haji Name</th>
+        <th width="150px">Travel Name</th>
+        <th width="30px">:</th>
+        <th>{{ $pakethaji->Penyelenggara }}</th>
+    </tr>
+    <tr>
+        <th width="150px">Package Name</th>
         <th width="30px">:</th>
         <th>{{ $pakethaji->PackageHajiName }}</th>
     </tr>
@@ -23,12 +28,17 @@
     <tr>
         <th width="150px">Price</th>
         <th width="30px">:</th>
-        <th>{{ $pakethaji->PackageHajiPrice }}</th>
+        <th>{{ $pakethaji->Price }}</th>
     </tr>
     <tr>
         <th width="150px">Available Seets</th>
         <th width="30px">:</th>
         <th>{{ $pakethaji->HajiAvailSeets }}</th>
+    </tr>
+    <tr>
+        <th width="150px">Image</th>
+        <th width="30px">:</th>
+        <th><img src="{{ url('image_haji/'.$pakethaji->PackageHajiImage) }}" width="400px"></th>
     </tr>
     <tr>
         <th><a href="/pakethaji" class="btn btn-success tbn-sm">Back</a></th>

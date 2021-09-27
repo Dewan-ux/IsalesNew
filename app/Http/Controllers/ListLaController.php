@@ -25,17 +25,53 @@ class ListLaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function detail($ListLaID)
     {
-        //
+        if (!$this->ListLaModel->detailData($ListLaID)) {
+            abort(404);
+        }
+
+        $data = [
+                'listla' => $this->ListLaModel->detailData($ListLaID),
+            ];
+        return view('LA.listla.detail', $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function add()
+    {
+        return view('LA.listla.add');
+    }
+
+    public function insert()
+    {
+        // dd($request->all());
+
+        Request()->validate([
+            'ListLaCode' => 'required|unique:lalisttable,ListLaCode|max:100',
+            'ListLaName' => 'required',
+            'ListLaPrice' => 'required',
+            'LaItenary' => 'required',
+            'LaAvailSeets' => 'required',
+            'LaImage' => 'required|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $file = Request()->LaImage;
+        $fileName = Request()->ListLaCode . '.' . $file->extension();
+        $file->move(public_path('image_la'), $fileName);
+
+        $data = [
+            'ListLaCode' => Request()->ListLaCode,
+            'ListLaName' => Request()->ListLaName,
+            'ListLaPrice' => Request()->ListLaPrice,
+            'LaItenary' => Request()->LaItenary,
+            'LaAvailSeets' => Request()->LaAvailSeets,
+            'LaImage' => $fileName,
+        ];
+        
+        $this->ListLaModel->addData($data);
+        return redirect('listla')->with('status', 'Data Added Successfully');
+    }
+
     public function store(Request $request)
     {
         //

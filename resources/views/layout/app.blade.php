@@ -5,12 +5,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Khalifah Asia | @yield('title')</title>
-  <!-- Tell the browser to be responsive to screen width -->
+  <style>
+    div.scrollmenu {
+        overflow: auto;
+        white-space: nowrap;
+    }
+  </style>
+
+<!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{ asset ('adminlte-v2/') }}/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('adminlte-v2/') }}/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('adminlte-v2/') }}/bower_components/fontawesome/css/all.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset ('adminlte-v2/') }}/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
@@ -39,7 +47,8 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>K</b>A</span>
       <!-- logo for regular state and mobile devices -->
-      <img src="{{ asset('adminlte-v2/dist/img/newlogo1.jpg') }}" alt="logo-ka" class="img-responsive logo">
+      {{-- <img src="{{ asset('adminlte-v2/dist/img/newlogo1.jpg') }}" alt="logo-ka" class="img-responsive logo"> --}}
+      <span class="text">Khalifah Asia</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -65,7 +74,7 @@
                 <img src="{{ asset ('adminlte-v2/') }}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  {{ Auth::user()->name }} - {{ Auth::user()->Email }}
+                  {{ Auth::user()->name }} - {{ Auth::user()->email }}
                 </p>
               </li>
               
@@ -161,6 +170,7 @@
 <script src="{{ asset ('adminlte-v2/') }}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset ('adminlte-v2/') }}/dist/js/demo.js"></script>
+
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()

@@ -17,4 +17,9 @@ class PaketHajiModel extends Model
     {
         return DB::table('packagehajitable')->where('PackageHajiID', $PackageHajiID)->first();
     } 
+
+    public function addData($data)
+    {
+        return DB::table('packagehajitable')->insert($data);
+    } 
 }

@@ -11,6 +11,11 @@
         <th>{{ $tour->TourPriceCode }}</th>
     </tr>
     <tr>
+        <th width="150px">Travel Name</th>
+        <th width="30px">:</th>
+        <th>{{ $tour->TourTravelName }}</th>
+    </tr>
+    <tr>
         <th width="150px">Tour Name</th>
         <th width="30px">:</th>
         <th>{{ $tour->TourPriceName }}</th>

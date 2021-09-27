@@ -3,20 +3,31 @@
 
 
 @section('content')
-<a href="" class="btn btn-primary btn-sm">Add Data</a> 
+<a href="/tour/add" class="btn btn-primary btn-sm">Add Data</a> 
       <div class="row">
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Data List Tour</h3>
             </div>
+
+            @if (session('status'))
+              <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> Success!</h4>
+                {{ session('status') }}
+              </div>
+            @endif
+
         <!-- /.box-header -->
             <div class="box-body">
+              <div class="scrollmenu">
               <table class="table table-striped table-hover">
                   <thead>
                 <tr>
                   <th>Tour ID</th>  
                   <th>Tour Code</th>
+                  <th>Travel Name</th>
                   <th>Tour Name</th>
                   <th>Tour Price</th>
                   <th width="150px">Tour Itenary</th>
@@ -33,6 +44,7 @@
                 <tr> 
                   <td>{{ $no++ }}</td>  
                   <td>{{ $data->TourPriceCode }}</td>
+                  <td>{{ $data->TourTravelName }}</td>
                   <td>{{ $data->TourPriceName }}</td>
                   <td>{{ $data->TourPrice }}</td>
                   <td>{{ $data->TourItenary }}</td>
@@ -47,4 +59,6 @@
                     @endforeach
                </tbody>
               </table>
+              </div>
+            </div>
 @endsection

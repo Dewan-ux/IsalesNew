@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\KelasHajiModel;
+use DB;
 
 class KelasHajiController extends Controller
 {
@@ -37,26 +38,20 @@ class KelasHajiController extends Controller
         return view('haji.kelashaji.detail', $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function add()
     {
-        //
+        return view('haji.kelashaji.add');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function insert(Request $request)
     {
-        //
+        DB::table('classhajitable')->insert([
+            'ClassCode' => $request->ClassCode,
+            'ClassName' => $request->ClassName,
+            'Price' => $request->Price,
+        ]);
+        return redirect('kelashaji')->with('status', 'Data Added Successfully');
     }
 
     /**

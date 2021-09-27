@@ -12,4 +12,9 @@ class LaTypeModel extends Model
     {
         return DB::table('latypetable')->get();
     }
+
+    public function detailData($LaTypeID)
+    {
+        return DB::table('latypetable')->where('LaTypeID', $LaTypeID)->first();
+    } 
 }

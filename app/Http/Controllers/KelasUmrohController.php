@@ -25,9 +25,16 @@ class KelasUmrohController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function detail($PackageClassID)
     {
-        //
+        if (!$this->KelasUmrohModel->detailData($PackageClassID)) {
+            abort(404);
+        }
+
+        $data = [
+                'kelasumroh' => $this->KelasUmrohModel->detailData($PackageClassID),
+            ];
+        return view('umroh.kelas_umroh.detail', $data);
     }
 
     /**
@@ -36,9 +43,20 @@ class KelasUmrohController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function add()
     {
-        //
+        return view('umroh.kelas_umroh.add');
+    }
+
+    public function insert(Request $request)
+    {
+        DB::table('PackageClasstable')->insert([
+            'PackageClassCode' => $request->PackageClassCode,
+            'PackageClassName' => $request->PackageClassName,
+            'Price' => $request->Price,
+        ]);
+        return redirect('kelasumroh')->with('status', 'Data Added Successfully');
     }
 
     /**

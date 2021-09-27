@@ -3,13 +3,20 @@
 
 
 @section('content')
-<a href="" class="btn btn-primary btn-sm">Add Data</a> 
+<a href="/tourtype/add" class="btn btn-primary btn-sm">Add Data</a> 
       <div class="row">
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Tour Type Data</h3>
             </div>
+
+            @if (session('status'))
+              <div class="alert alert-success">
+                {{ session('status') }}
+              </div>
+            @endif
+
         <!-- /.box-header -->
             <div class="box-body">
               <table class="table table-striped table-hover">

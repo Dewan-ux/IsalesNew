@@ -12,4 +12,14 @@ class ListLaModel extends Model
     {
         return DB::table('lalisttable')->get();
     }
+
+    public function detailData($ListLaID)
+    {
+        return DB::table('lalisttable')->where('ListLaID', $ListLaID)->first();
+    } 
+
+    public function addData($data)
+    {
+        return DB::table('lalisttable')->insert($data);
+    } 
 }

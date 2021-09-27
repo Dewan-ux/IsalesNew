@@ -17,4 +17,9 @@ class UmrohModel extends Model
     {
         return DB::table('packagetable')->where('PackageID', $PackageID)->first();
     }  
+
+    public function addData($data)
+    {
+        return DB::table('packagetable')->insert($data);
+    } 
 }
